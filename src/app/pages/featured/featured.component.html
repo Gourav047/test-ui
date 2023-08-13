@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div id="menu_container" class="mt-2 menu__options" *ngIf="isLogin">
+        <app-menu></app-menu>
+    </div>
+    <div class="data__container pt-4 pb-4">
+        <div class="logout_area" *ngIf="isLogin">
+            <button mat-button color="primary" (click)="signout()">Sign out</button>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <!-- <app-searchbox [showButtons]="showButtons"></app-searchbox> -->
+            </div>
+        </div>
+
+        <div class="container contentArea">
+            <div class="row">
+                <div class="col-md-3 images" *ngFor="let data of featuredData">
+                    <span (click)="openWatchComponent(data)"><img [src]=data.moviePoster alt="" height="120px" width="210px"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

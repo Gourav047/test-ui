@@ -1,0 +1,9 @@
+<div id="menubar1">
+    <span (click)="redirect('dashboard')">Home</span>
+    <span (click)="redirect('featured')">Featured</span>
+    <span (click)="redirect('new-releases')">New Releases</span>
+    <span (click)="redirect('upcoming')">Upcoming</span>
+    <span (click)="redirect('myList')">My List</span>
+    <span *ngIf="isAdmin" class="admin_list" (click)="redirect('upload-movies')">Upload Content</span>
+    <!-- <span *ngIf="isAdmin" class="admin_list" (click)="redirect('revoke Subscription')">Revoke Subscription</span> -->
+</div>

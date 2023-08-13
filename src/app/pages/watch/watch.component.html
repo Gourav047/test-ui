@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div id="menu_container" class="mt-2 menu__options" *ngIf="isLogin">
+        <app-menu></app-menu>
+    </div>
+    <div class="data__container pt-4 pb-4">
+        <div class="logout_area" *ngIf="isLogin">
+            <button mat-button color="primary" class="signout_button" (click)="logout()">Sign out</button>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="video-container">
+                        <video class="video-player" controls [poster]=this.data.source>
+                            <source src="example.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <img class="thumbnail" [src]=this.data.source alt="Video Thumbnail">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="details-column">
+                        <button mat-button color="primary" (click)="addToList(this.data)">Add To List</button>
+                        <h1 class="movie-title">{{this.data.name}}</h1>
+                        <p class="movie-description">
+                           {{this.data.description}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+.container-fluid {
+    background-color: rgb(157, 240, 240);
+    height: auto;
+    padding-right: 10px;
+}
+
+.menu__options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.data__container {
+    border: solid 1px rgb(38, 3, 121);
+    width: 80%;
+    margin-left: 5rem;
+    padding: 5px
+}
+
+.logout_area {
+    display: flex;
+    justify-content: flex-end;
+    top: -2px;
+}
+
+.signout {
+    top: -60px;
+    right: -6px;
+    border: solid 1px;
+}
+
+.image_container {
+    width: 400px;
+    height: 500px;
+    background-color: #095480;
+    border: 2px dashed #6ac4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image_area{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+button{
+    border: solid 1px;
+}

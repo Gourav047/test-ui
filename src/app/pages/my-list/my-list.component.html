@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div id="menu_container" class="mt-2 menu__options" *ngIf="isLogin">
+        <app-menu></app-menu>
+    </div>
+
+    <div class="data__container pt-4 pb-4">
+        <div class="logout_area" *ngIf="isLogin">
+            <button mat-button color="primary" (click)="logout()">Sign out</button>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <app-searchbox [showButtons]="showButtons"></app-searchbox>
+            </div>
+        </div>
+
+        <div class="container contentArea">
+            <div class="row" *ngIf="showList">
+                <div class="col-md-3 images" *ngFor="let data of listData">
+                    <img src="../../../assets/media/Thumbnails/{{data.source}}" alt="" height="120px" width="210px">
+                </div>
+            </div>
+
+            <div class="row m-4 p-4" *ngFor="let data of listData">
+                <div class="col-md-3">
+                    <span (click)="openWatchComponent(data)"><img [src]=data.moviePoster alt="" height="200px"
+                            width="150px"></span>
+                    <label>{{data.name}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

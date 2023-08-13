@@ -1,0 +1,19 @@
+<div class="container mt-3">
+    <h4>Featured</h4>
+    <div class="row">
+        <div class="feature_container" *ngFor="let data of copyFeatureData">
+            <span (click)="openWatchComponent(data)"><img [src]=data.moviePoster alt=""
+                    height="200px" width="150px"></span>
+        </div>
+    </div>
+</div>
+<div class="container mt-2">
+    <h4>New Release</h4>
+    <div class="row">
+        <div class="feature_container" *ngFor="let data of feature_data">
+            <span (click)="openWatchComponent(data)"><img [src]=data.moviePoster alt=""
+                    height="200px" width="150px"></span>
+            <label>{{data.name}}</label>
+        </div>
+    </div>
+</div>

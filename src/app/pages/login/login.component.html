@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="col-xl-6 view__container">
+        <div class="row heading_area mb-3">
+            <hr class="mt-1">
+            <h3>Login</h3>
+            <hr>
+        </div>
+        <div class="container login__form">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="row mt-5">
+                    <div class="col-md-2 input__field">
+                        <label class="form-label">User Name</label>
+                    </div>
+
+                    <div class="col-md-4 input__field">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="User Name" formControlName="username">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-2 input__field">
+                        <label class="form-label">Password</label>
+                    </div>
+
+                    <div class="col-md-4 input__field">
+                        <mat-form-field class="example-full-width">
+                            <input matInput placeholder="Password" formControlName="password">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="row button__container">
+                    <button mat-button color="primary">Login</button>
+                    <button mat-button color="acent" (click)="redirect('signup')">Create New Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

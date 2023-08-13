@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 search__container">
+            <div class="search-hero pb-2">
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+                    placeholder="Enter Key word" >
+            </div>
+            <div>
+                <button mat-button color="primary" (click)="search()">Search</button>
+            </div> 
+        </div>
+        <div class="col-lg-4" *ngIf="showButtons">
+            <div class="row loginSection">
+                <div class="col-md-4"><button mat-button color="primary" (click)="redirection('signup')">Sign Up</button></div>
+                <div class="col-md-3"><button mat-button color="primary" (click)="redirection('login')">Login</button></div>
+            </div>
+        </div>
+    </div>
+</div>

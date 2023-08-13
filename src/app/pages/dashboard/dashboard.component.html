@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div id="menu_container" class="mt-2 menu__options" *ngIf="isLogin">
+        <app-menu></app-menu>
+    </div>
+    <div class="data__container pt-4 pb-4">
+        <div class="logout_area" *ngIf="isLogin">
+            <button mat-button color="primary" (click)="logout()">Sign out</button>
+        </div>
+        <!-- Search Box -->
+        <div class="container">
+            <div class="row">
+                <app-searchbox [showButtons]="!showButtons"></app-searchbox>
+            </div>
+        </div>
+
+        <!-- Featured and Upcoming Section -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <app-upcoming-section [upcoming_data]="upcoming_data" ></app-upcoming-section>
+                </div>
+                <div class="col-lg-8 featureArea">
+                    <app-feature-section [feature_data]="feature_data"></app-feature-section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

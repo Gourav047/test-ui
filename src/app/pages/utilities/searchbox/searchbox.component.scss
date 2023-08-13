@@ -1,0 +1,28 @@
+.search-hero {
+    width:80%;
+    margin-right: 20px;
+}
+
+.form-control {
+    box-shadow: 0 10px 40px 0 #B0C1D9;
+}
+
+.form-control::placeholder {
+    font-family: FontAwesome;
+}
+
+.search__container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding:0;
+}
+
+.loginSection{
+    display: flex;
+    justify-content: flex-end;
+}
+
+button{
+    border:solid 1px;
+}
