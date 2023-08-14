@@ -1,6 +1,6 @@
 .container-fluid{
     background-color: rgb(157, 240, 240);
-    height:auto;
+    height:100vh;
     padding-right: 10px;
 }
 
@@ -26,7 +26,8 @@ button{
     border: solid 1px rgb(38, 3, 121);
     width: 80%;
     margin-left: 5rem;
-    padding:5px
+    padding:5px;
+    height: 70vh;
 }
 
 .contentArea{
@@ -36,4 +37,8 @@ button{
 
 .images{
     margin-bottom: 10px;
+}
+
+.footer{
+    bottom: 0;
 }

@@ -15,10 +15,17 @@
 
         <div class="container contentArea">
             <div class="row">
-                <div class="col-md-3 images" *ngFor="let data of featuredData">
-                    <span (click)="openWatchComponent(data)"><img [src]=data.moviePoster alt="" height="120px" width="210px"></span>
+                <div class="col-md-3 images" *ngFor="let data of paginatedData">
+                    <span (click)="openWatchComponent(data)"><img [src]=data.moviePoster alt="" height="120px"
+                            width="210px"></span>
                 </div>
             </div>
+        </div>
+
+        <div class="footer">
+            <mat-paginator [length]="featuredData.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                (page)="onPageChange($event)">
+            </mat-paginator>
         </div>
     </div>
 </div>
