@@ -1,20 +1,29 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/environment/models/account/account.service';
 import { feature } from 'src/dummyData/upcommingData';
 import { DashboardService } from 'src/app/environment/models/dashboard/dashboard.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { tosterFunction } from 'src/app/util/utilities';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-featured',
   templateUrl: './featured.component.html',
   styleUrls: ['./featured.component.scss']
 })
-export class FeaturedComponent {
+export class FeaturedComponent implements OnInit {
   isLogin: boolean = true;
   showButtons: boolean = false;
   featuredData: any[] = [];
+
+  @ViewChild(MatPaginator) paginator: any;
+  pageSize = 10;
+  pageSizeOptions:number[]=[5,10,20,30];
+  
+  currentPage = 0;
+
+  paginatedData:any[]=[];
 
   constructor(
     private _accountService: AccountService,
@@ -28,10 +37,12 @@ export class FeaturedComponent {
 
   async ngOnInit() {
     const response = await this.getData()
-    this.featuredData = response
+    this.paginatedData = response;
+    this.featuredData = response;
+    this.paginateData();
     console.log(this.featuredData)
-    for (let i = 0; i < this.featuredData.length; i++) {
-      const element = this.featuredData[i];
+    for (let i = 0; i < this.paginateData.length; i++) {
+      const element = this.paginatedData[i];
       if (element.moviePoste != undefined) {
         element.moviePoster = this._sanitizer.bypassSecurityTrustResourceUrl(element?.moviePoster);
       }
@@ -85,5 +96,20 @@ export class FeaturedComponent {
       name: response.name,
       yearOfRelease: response.yearOfRelease
     })
+  }
+
+  paginateData(){
+    const startIndex = this.currentPage * this.pageSize;
+    const endIndex = startIndex + this.pageSize;
+    console.log(this.paginatedData,endIndex,startIndex);
+    this.paginatedData = this.featuredData.slice(startIndex, endIndex);
+    this._cdr.detectChanges();
+  }
+
+  onPageChange(event: any): void {
+    console.log("CAlling",event);
+    this.currentPage = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.paginateData();
   }
 }
