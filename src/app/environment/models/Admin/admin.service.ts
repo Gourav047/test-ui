@@ -48,4 +48,14 @@ export class AdminService {
 
     return this._http.post(url, formData, { headers: headers })
   }
+
+  getAllUser(){
+    const url = api.Admin.getUsers;
+    return this._http.get(url);
+  }
+
+  revokeUser(id:string){
+    const url = `${api.Admin.revokeSubscription}${id}`;
+    return this._http.post(url,{});
+  }
 }

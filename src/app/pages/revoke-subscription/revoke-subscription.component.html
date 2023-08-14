@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div id="menu_container" class="mt-2 menu__options" *ngIf="isLogin">
+        <app-menu></app-menu>
+    </div>
+
+    <div class="data__container pt-4 pb-4">
+        <div class="logout_area" *ngIf="isLogin">
+            <button mat-button color="primary" class="signout" (click)="logout()">Sign out</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="mat-elevation-z8">
+                <table mat-table [dataSource]="dataSource">
+              
+                  <!-- Position Column -->
+                  <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let element; let i = index;"> {{i}} </td>
+                  </ng-container>
+              
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.fullName}} </td>
+                  </ng-container>
+              
+                  <!-- Weight Column -->
+                  <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                  </ng-container>
+              
+                  <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <button mat-button color="primary" (click)="toggleStatus(element)">Revoke</button> 
+                    </td>
+                  </ng-container>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              
+                <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                               showFirstLastButtons
+                               aria-label="Select page of periodic elements">
+                </mat-paginator>
+              </div>
+        </div>
+    </div>
+</div>

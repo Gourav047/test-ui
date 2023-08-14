@@ -13,7 +13,7 @@ import { myList } from 'src/dummyData/upcommingData';
 })
 export class MyListComponent {
 
-  isLogin:boolean=true;
+  isLogin:boolean=false;
   showButtons:boolean=false;
   listData:any=[];
   showList:boolean=true;
@@ -24,7 +24,7 @@ export class MyListComponent {
     private _userService:UserService,
     private _dashboardService:DashboardService
   ){
-
+    this.isLogin=this._accountService.isAuthenticated();
   }
 
   async ngOnInit(){

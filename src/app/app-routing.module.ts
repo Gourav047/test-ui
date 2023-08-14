@@ -8,6 +8,7 @@ import { MyListComponent } from './pages/my-list/my-list.component';
 import { AuthguardService } from './environment/models/authguard.service';
 import { UploadMoviesComponent } from './pages/upload-movies/upload-movies.component';
 import { WatchComponent } from './pages/watch/watch.component';
+import { RevokeSubscriptionComponent } from './pages/revoke-subscription/revoke-subscription.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,11 @@ const routes: Routes = [
     canActivate: [AuthguardService],
     component:UploadMoviesComponent
   },
+  {
+    path:"revoke-user",
+    canActivate: [AuthguardService],
+    component:RevokeSubscriptionComponent
+  }
 ];
 
 @NgModule({

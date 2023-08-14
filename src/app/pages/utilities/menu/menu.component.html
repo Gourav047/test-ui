@@ -5,5 +5,5 @@
     <span (click)="redirect('upcoming')">Upcoming</span>
     <span (click)="redirect('myList')">My List</span>
     <span *ngIf="isAdmin" class="admin_list" (click)="redirect('upload-movies')">Upload Content</span>
-    <!-- <span *ngIf="isAdmin" class="admin_list" (click)="redirect('revoke Subscription')">Revoke Subscription</span> -->
+    <span *ngIf="isAdmin" class="admin_list" (click)="redirect('revoke-user')">Revoke Subscription</span>
 </div>

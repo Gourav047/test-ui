@@ -25,6 +25,9 @@ import { UploadMoviesComponent } from './pages/upload-movies/upload-movies.compo
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AuthInterceptor } from './environment/models/auth.interceptor';
+import { RevokeSubscriptionComponent } from './pages/revoke-subscription/revoke-subscription.component';
+import { MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,8 @@ import { AuthInterceptor } from './environment/models/auth.interceptor';
     FeaturedComponent,
     MyListComponent,
     WatchComponent,
-    UploadMoviesComponent
+    UploadMoviesComponent,
+    RevokeSubscriptionComponent
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,8 @@ import { AuthInterceptor } from './environment/models/auth.interceptor';
     MatDatepickerModule,
     MatNativeDateModule,
     MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     {
