@@ -37,19 +37,20 @@ export class FeaturedComponent implements OnInit {
 
   }
 
-  async ngOnInit() {
-    const response = await this.getData()
-    this.paginatedData = response;
-    this.featuredData = response;
-    this.paginateData();
-    
-    for (let i = 0; i < this.paginateData.length; i++) {
-      const element = this.paginatedData[i];
-      if (element.moviePoste != undefined) {
-        element.moviePoster = this._sanitizer.bypassSecurityTrustResourceUrl(element?.moviePoster);
+  ngOnInit() {
+    this.getData().then(res=>{
+      this.paginatedData = res;
+      this.featuredData = res;
+      this.paginateData();
+      
+      for (let i = 0; i < this.paginateData.length; i++) {
+        const element = this.paginatedData[i];
+        if (element.moviePoste != undefined) {
+          element.moviePoster = this._sanitizer.bypassSecurityTrustResourceUrl(element?.moviePoster);
+        }
       }
-    }
-    this._cdr.detectChanges()
+      this._cdr.detectChanges()
+    })
   }
 
 

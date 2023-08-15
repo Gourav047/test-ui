@@ -30,8 +30,10 @@ export class MyListComponent {
   }
 
   async ngOnInit(){
-    this.listData = await this.getList();
-    this.filterData=this.listData;
+    this.getList().then(res=>{
+      this.listData=res;
+      this.filterData=res;
+    });
   }
 
   getList():Promise<any>{
