@@ -17,6 +17,8 @@ export class MyListComponent {
   showButtons:boolean=false;
   listData:any=[];
   showList:boolean=true;
+  searchText:string='';
+  filterData:any=[];
 
   constructor(
     private _accountService:AccountService,
@@ -29,7 +31,7 @@ export class MyListComponent {
 
   async ngOnInit(){
     this.listData = await this.getList();
-    console.log(this.listData);
+    this.filterData=this.listData;
   }
 
   getList():Promise<any>{
@@ -82,5 +84,11 @@ export class MyListComponent {
       name:response.name,
       yearOfRelease:response.yearOfRelease
     })
+  }
+
+  searchFeatures():void{
+    this.filterData = this.listData.filter((feature:any) =>
+      feature.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
   }
 }

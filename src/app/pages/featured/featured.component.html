@@ -10,6 +10,10 @@
         <div class="container">
             <div class="row">
                 <!-- <app-searchbox [showButtons]="showButtons"></app-searchbox> -->
+                <div class="col-md p-4">
+                    <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+                    placeholder="Enter Key word" (input)="searchFeatures()">
+                </div>
             </div>
         </div>
 

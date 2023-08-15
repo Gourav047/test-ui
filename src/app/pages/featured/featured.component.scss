@@ -27,7 +27,7 @@ button{
     width: 80%;
     margin-left: 5rem;
     padding:5px;
-    height: 70vh;
+    height: 80vh;
 }
 
 .contentArea{
@@ -41,4 +41,12 @@ button{
 
 .footer{
     bottom: 0;
+}
+
+.text-box{
+    width: 50%;
+    border:solid 1px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding:3px;
 }

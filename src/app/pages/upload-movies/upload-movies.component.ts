@@ -54,7 +54,6 @@ export class UploadMoviesComponent {
   }
 
   upload() {
-    console.log(this.uploadForm);
     let uploadObject = {
       name: this.uploadForm.value.name,
       category: this.uploadForm.value.category,
@@ -78,7 +77,6 @@ export class UploadMoviesComponent {
 
   onFileSelected(event: any): void {
     const selectedFile: File = event.target.files[0];
-    console.log(event.target.files)
     if (selectedFile) {
       this.showImage = true;
       this.imageUrl = URL.createObjectURL(selectedFile);
@@ -91,7 +89,6 @@ export class UploadMoviesComponent {
           console.error('Error converting to base64:', error);
         });
     }
-    console.log(this.uploadForm)
   }
 
   async convertToBase64(file: File): Promise<any> {
