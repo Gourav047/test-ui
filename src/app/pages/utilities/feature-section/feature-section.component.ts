@@ -16,7 +16,7 @@ export class FeatureSectionComponent {
 
   @Input() feature_data: any = {}
 
-  copyFeatureData: any = [];
+  copyFeatureData: any = []
 
   isApiCalling: boolean = ENVIRONMENT.api;
 
@@ -25,30 +25,30 @@ export class FeatureSectionComponent {
     private _dashboardService: DashboardService,
     private _sanitizer: DomSanitizer
   ) {
+    this.copyFeatureData = this.feature_data;
   }
 
-  async ngOnInit() {
-
-    this.feature_data = await this.getData();
-    this.copyFeatureData = this.feature_data;
-
-    for (let i = 0; i < this.feature_data.length; i++) {
-      const element = this.feature_data[i];
-      const val = this.copyFeatureData[i];
-      if (element.moviePoste != undefined) {
-        element.moviePoster = this._sanitizer.bypassSecurityTrustResourceUrl(element?.moviePoster);
-        val.moviePoster = this._sanitizer.bypassSecurityTrustResourceUrl(val?.moviePoster);
+  ngOnInit() {
+    this.getData().then(res=>{
+      this.copyFeatureData = this.feature_data;
+      for (let i = 0; i < this.feature_data.length; i++) {
+        const element = this.feature_data[i];
+        const val = this.copyFeatureData[i];
+        if (element.moviePoste != undefined) {
+          element.moviePoster = this._sanitizer.bypassSecurityTrustResourceUrl(element?.moviePoster);
+          val.moviePoster = this._sanitizer.bypassSecurityTrustResourceUrl(val?.moviePoster);
+        }
       }
-    }
-
-    this._dashboardService.searchQuery$.subscribe(query => {
-      if (query && query != '') {
-        this.copyFeatureData = this.feature_data.feature.filter((item: any) => {
-          return item.title.toLowerCase() == query.toLowerCase();
-        });
-      } else {
-        this.copyFeatureData = this.feature_data;
-      }
+  
+      this._dashboardService.searchQuery$.subscribe(query => {
+        if (query && query != '') {
+          this.copyFeatureData = this.feature_data.feature.filter((item: any) => {
+            return item.title.toLowerCase() == query.toLowerCase();
+          });
+        } else {
+          this.copyFeatureData = this.feature_data;
+        }
+      })
     })
   }
 

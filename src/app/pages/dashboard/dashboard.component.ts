@@ -63,19 +63,20 @@ export class DashboardComponent {
   ngOnInit() {
     //Fetching Dashboard details
     if (this.API_CALLING_CHECK) {
-      // this.getData();
-    } else {
-      this.upcoming_data = upcommingData;
-      this.feature_data = featureDataSet;
+      this.getData().then(res=>{
+        this.upcoming_data = res;
+        this.feature_data = res;
+        this._dashboardService.dashboardData.next(res);
+        this._cdr.detectChanges();
+      });
     }
   }
 
-  getData() {
-    this._dashboardService.getMovies().subscribe((res: any) => {
-      this.upcoming_data = res;
-      this.feature_data = res;
-      this._dashboardService.dashboardData.next(res);
-      this._cdr.detectChanges();
+  getData():Promise<any> {
+    return new Promise((resolve,reject)=>{
+      this._dashboardService.getMovies().subscribe((res: any) => {
+        res.length>0?resolve(res):reject('ERR')
+      })
     })
   }
 

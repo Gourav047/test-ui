@@ -29,13 +29,16 @@ export class UpcomingSectionComponent {
   ) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     if (this.isApiCalling) {
-      this.upcoming_data = await this.getData();
-      for (let i = 0; i < this.upcoming_data.length; i++) {
-        const element = this.upcoming_data[i];
-        element.moviePoster = this._sanitizer.bypassSecurityTrustResourceUrl(element?.moviePoster);
-      }
+      //this.upcoming_data = await this.getData();
+      // this.getData().then(res=>{
+      //   this.upcoming_data = res;
+      //   for (let i = 0; i < this.upcoming_data.length; i++) {
+      //     const element = this.upcoming_data[i];
+      //     element.moviePoster = this._sanitizer.bypassSecurityTrustResourceUrl(element?.moviePoster);
+      //   }
+      // })
     }
   }
 
