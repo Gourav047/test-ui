@@ -56,7 +56,6 @@ export class RevokeSubscriptionComponent {
   }
 
   toggleStatus(object:any){
-    console.log(object);
     this._adminService.revokeUser(object.id).subscribe(res=>{
       if(res){
         tosterFunction('sucess','User Revoked');

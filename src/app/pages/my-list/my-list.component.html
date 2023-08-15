@@ -9,19 +9,15 @@
         </div>
 
         <div class="container">
-            <div class="row">
-                <app-searchbox [showButtons]="showButtons"></app-searchbox>
+            <div class="row p-4">
+                <!-- <app-searchbox [showButtons]="showButtons"></app-searchbox> -->
+                <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+                    placeholder="Enter Key word" (input)="searchFeatures()">
             </div>
         </div>
 
         <div class="container contentArea">
-            <div class="row" *ngIf="showList">
-                <div class="col-md-3 images" *ngFor="let data of listData">
-                    <img src="../../../assets/media/Thumbnails/{{data.source}}" alt="" height="120px" width="210px">
-                </div>
-            </div>
-
-            <div class="row m-4 p-4" *ngFor="let data of listData">
+            <div class="row m-4 p-4" *ngFor="let data of filterData">
                 <div class="col-md-3">
                     <span (click)="openWatchComponent(data)"><img [src]=data.moviePoster alt="" height="200px"
                             width="150px"></span>

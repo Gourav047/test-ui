@@ -62,7 +62,6 @@ export class DashboardComponent {
 
   ngOnInit() {
     //Fetching Dashboard details
-    console.log("THIS");
     if (this.API_CALLING_CHECK) {
       // this.getData();
     } else {

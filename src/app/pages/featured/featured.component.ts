@@ -16,6 +16,7 @@ export class FeaturedComponent implements OnInit {
   isLogin: boolean = true;
   showButtons: boolean = false;
   featuredData: any[] = [];
+  searchText:string='';
 
   @ViewChild(MatPaginator) paginator: any;
   pageSize = 10;
@@ -24,6 +25,7 @@ export class FeaturedComponent implements OnInit {
   currentPage = 0;
 
   paginatedData:any[]=[];
+  copySearchData:any=[];
 
   constructor(
     private _accountService: AccountService,
@@ -40,7 +42,7 @@ export class FeaturedComponent implements OnInit {
     this.paginatedData = response;
     this.featuredData = response;
     this.paginateData();
-    console.log(this.featuredData)
+    
     for (let i = 0; i < this.paginateData.length; i++) {
       const element = this.paginatedData[i];
       if (element.moviePoste != undefined) {
@@ -101,15 +103,19 @@ export class FeaturedComponent implements OnInit {
   paginateData(){
     const startIndex = this.currentPage * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    console.log(this.paginatedData,endIndex,startIndex);
     this.paginatedData = this.featuredData.slice(startIndex, endIndex);
     this._cdr.detectChanges();
   }
 
   onPageChange(event: any): void {
-    console.log("CAlling",event);
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
     this.paginateData();
+  }
+
+  searchFeatures():void{
+    this.paginatedData = this.featuredData.filter(feature =>
+      feature.name.toLowerCase().includes(this.searchText.toLowerCase())
+    );
   }
 }

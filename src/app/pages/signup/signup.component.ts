@@ -75,7 +75,6 @@ export class SignupComponent {
   postData(object:any):Promise<any>{
     return new Promise((resolve,reject)=>{
       this._accountService.signUp(object).subscribe(res => {
-        console.log(res);
         if (res) {
           tosterFunction('success','Signed in successfully')
           resolve(true);
@@ -84,7 +83,6 @@ export class SignupComponent {
           reject(false)
         }
       },(err:HttpErrorResponse)=>{
-        console.log("res",err)
         tosterFunction('error','Oops..!! Something Not Right..');
         reject(false);
       })
@@ -95,10 +93,8 @@ export class SignupComponent {
     const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,}$/;
 
     if (!pattern.test(password)) {
-      console.log("Hello")
       return false; // Password doesn't meet pattern requirements
     }
-    console.log(this.signUpForm)
     return password === confirmPassword;
   }
 
